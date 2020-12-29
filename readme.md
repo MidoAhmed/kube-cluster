@@ -63,7 +63,24 @@ your cluster is now fully set up and functional, with workers ready to run workl
 
 Now that your cluster is verified successfully, 
 
+## Test Access via kubectl from your machine:
+    
+    # ssh to master node and copy the following conent which is the kubeconfig for your cluster.
+    > $ cat /etc/kubernetes/admin.conf or cat ~/.kube/config
 
+    # make sure that the server endpoint is accessible, if not like in example.kubeconfig file then replace it with public accessible ip
+    server: https://10.0.4.4:6443  ---> server: https://master-public-ip:6443
+
+    # set kubeconfig
+    > $ export KUBECONFIG=kubeconfig.yml or put in ~/.kube/config
+
+    # verifying kubectl configuration
+    > $ kubectl cluster-info  --insecure-skip-tls-verify
+
+        Kubernetes master is running at https://master-public-ip:6443
+        KubeDNS is running at https://master-public-ip:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+So congratulations you can access your kubernetes cluster 
 
 ## Resources:
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04#step-2-%E2%80%94-creating-a-non-root-user-on-all-remote-servers

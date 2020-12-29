@@ -1,3 +1,4 @@
 .env
 ansible/hosts.ini
 ansible/.ssh
+kubeconfig.yml
