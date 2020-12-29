@@ -59,7 +59,7 @@ your cluster is now fully set up and functional, with workers ready to run workl
     | ----------- | ----------- | ----------- | --------|---------|
     | instance01  | Ready       | master      | 3h4m    | v1.17.0 |
     | instance02  | Ready       | none        | 4m26s   | v1.17.0 |
-    | instance02  | Ready       | none        | 31s     | v1.17.0 |
+    | instance03  | Ready       | none        | 31s     | v1.17.0 |
 
 Now that your cluster is verified successfully, 
 
