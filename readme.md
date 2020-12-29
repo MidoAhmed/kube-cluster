@@ -1,5 +1,6 @@
 
-# Create Kubernetes Cluster Using on Ubuntu 18.04 (One master node, Two worker nodes)
+# Create Kubernetes Cluster Using Kubeadm
+ - 3 nodes (1 master, 2 workers) : Ubuntu 18.04, 2GB RAM and 2 vCPUs
  - Kubernetes v1.17.0
  - Docker v19.03
  - Ansible v2.10.3
