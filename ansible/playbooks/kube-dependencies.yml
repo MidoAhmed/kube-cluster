@@ -1,0 +1,58 @@
+- hosts: all
+  become: yes
+  tasks:
+   - name: Install aptitude using apt
+     apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+   - name: Install required system packages
+     apt: name={{ item }} state=latest update_cache=yes
+     loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+   - name: Add Docker GPG apt Key
+     apt_key:
+       url: https://download.docker.com/linux/ubuntu/gpg
+       state: present
+
+   - name: Add Docker Repository
+     apt_repository:
+       repo: deb https://download.docker.com/linux/ubuntu bionic stable
+       state: present
+
+   - name: Update apt and install docker-ce
+     apt: update_cache=yes name="docker-ce=5:19.03*" state=present
+
+   - name: install APT Transport HTTPS
+     apt:
+       name: apt-transport-https
+       state: present
+
+   - name: add Kubernetes apt-key
+     apt_key:
+       url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+       state: present
+
+   - name: add Kubernetes' APT repository
+     apt_repository:
+      repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+      filename: 'kubernetes'
+
+   - name: install kubelet
+     apt:
+       name: kubelet=1.17.0-00
+       state: present
+       update_cache: true
+
+   - name: install kubeadm
+     apt:
+       name: kubeadm=1.17.0-00
+       state: present
+
+- hosts: master
+  become: yes
+  tasks:
+   - name: install kubectl
+     apt:
+       name: kubectl=1.17.0-00
+       state: present
+       force: yes
