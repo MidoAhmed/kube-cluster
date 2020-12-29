@@ -37,7 +37,7 @@
     > $ ansible-playbook -i ~/kube-cluster/ansible/hosts.ini ~/kube-cluster/ansible/playbooks/master.yml
 
     * Verification: Check the status of the master node
-    > $ ssh ubuntu@master_ip 
+    > $ ssh ubuntu@master_ip\
     > $ kubectl get nodes
 
 You should see that the master in a Ready state, if it is smile ;)
@@ -52,4 +52,19 @@ your cluster is now fully set up and functional, with workers ready to run workl
 5. Verifying the Cluster
     
     * let’s verify that the cluster is working as intended.
-    > $ ssh ubuntu@master_ip
+    > $ ssh ubuntu@master_ip\
+    > $ kubectl get nodes
+
+    | NAME        | STATUS      | ROLES       | AGE     | VERSION |
+    | ----------- | ----------- | ----------- | --------|---------|
+    | instance01  | Ready       | master      | 3h4m    | v1.17.0 |
+    | instance02  | Ready       | none        | 4m26s   | v1.17.0 |
+    | instance02  | Ready       | none        | 31s     | v1.17.0 |
+
+Now that your cluster is verified successfully, 
+
+
+
+## Resources:
+- https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04#step-2-%E2%80%94-creating-a-non-root-user-on-all-remote-servers
+- https://jhooq.com/14-steps-to-install-kubernetes-on-ubuntu-18-04-and-16-04/
