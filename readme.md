@@ -82,6 +82,15 @@ Now that your cluster is verified successfully,
 
 So congratulations you can access your kubernetes cluster 
 
+## issues and troubleshooting:
+1. first issue
+    - Step: [4. Setting Up the Worker Nodes]
+    - Error: kubernetes - Couldn't able to join master node - error execution phase preflight: couldn't validate the identity of the API Server
+    - workaround: 
+        - create vnet peering between master and worker 1
+        - create vnet peering between master and worker 2
+        - verify by ping between nodes, make sure that ICMP protocol is activated on each machine
+    https://docs.microsoft.com/fr-fr/azure/virtual-network/tutorial-connect-virtual-networks-portal
 ## Resources:
 - https://www.digitalocean.com/community/tutorials/how-to-create-a-kubernetes-cluster-using-kubeadm-on-ubuntu-18-04#step-2-%E2%80%94-creating-a-non-root-user-on-all-remote-servers
 - https://jhooq.com/14-steps-to-install-kubernetes-on-ubuntu-18-04-and-16-04/
